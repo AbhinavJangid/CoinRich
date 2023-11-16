@@ -1,0 +1,32 @@
+.crypto-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.crypto-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.crypto-rank,
+.crypto-symbol,
+.crypto-price,
+.crypto-change {
+  margin-bottom: 5px;
+}
+
+.crypto-change svg {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.crypto-change .fa-arrow-up {
+  color: green;
+}
+
+.crypto-change .fa-arrow-down {
+  color: red;
+}
