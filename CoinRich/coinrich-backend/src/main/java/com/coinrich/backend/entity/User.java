@@ -1,5 +1,6 @@
 package com.coinrich.backend.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,25 +21,22 @@ import jakarta.persistence.UniqueConstraint;
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
-		
-
 	@Id
-    @Column(name="user_id", length = 45)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "user_id", length = 45)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
-	
-	@Column(name="name", length = 255)
-	private String name;
-	
-	@Column(name="email", length = 255)
-	private String email;
-	
 
-	@Column(name="password", length = 255)
+	@Column(name = "name", length = 255)
+	private String name;
+
+	@Column(name = "email", length = 255)
+	private String email;
+
+	@Column(name = "password", length = 255)
 	private String password;
-	
+
 	public User(int userId, String name, String email, String password) {
-	
+
 		this.userId = userId;
 		this.name = name;
 		this.email = email;
@@ -46,7 +44,7 @@ public class User {
 	}
 
 	public User() {
-		
+
 	}
 
 	public int getUserId() {
@@ -80,6 +78,5 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
 }

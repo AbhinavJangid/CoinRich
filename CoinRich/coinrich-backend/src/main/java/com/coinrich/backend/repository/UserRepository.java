@@ -8,13 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import com.coinrich.backend.entity.User;
 
-
-
 @EnableJpaRepositories
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer>{
+public interface UserRepository extends JpaRepository<User, Integer> {
 
 	Optional<User> findOneByEmailAndPassword(String email, String password);
-    User findByEmail(String email);
-	
+
+	User findByEmail(String email);
+
 }

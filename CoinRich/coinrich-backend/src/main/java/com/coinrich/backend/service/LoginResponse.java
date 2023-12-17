@@ -5,16 +5,15 @@ public class LoginResponse {
 	String message;;
 
 	Boolean response;
-	
+
 	String name;
 	String email;
-	
 
 	public LoginResponse(String message, Boolean response) {
 		this.message = message;
 		this.response = response;
 	}
-	
+
 	public LoginResponse(String message, Boolean response, String name, String email) {
 		this.name = name;
 		this.email = email;
@@ -53,8 +52,5 @@ public class LoginResponse {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
-	
+
 }

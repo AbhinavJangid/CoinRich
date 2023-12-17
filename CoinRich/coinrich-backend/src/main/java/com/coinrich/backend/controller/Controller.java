@@ -16,16 +16,20 @@ import org.springframework.web.client.RestTemplate;
 
 import com.coinrich.backend.dto.LoginDto;
 import com.coinrich.backend.dto.UserDto;
+import com.coinrich.backend.service.CoinDataService;
 import com.coinrich.backend.service.LoginResponse;
 import com.coinrich.backend.service.UserService;
 
 @RestController
 @CrossOrigin
 @RequestMapping("api/v1/user")
-public class UserController {
+public class Controller {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired(required = false)
+	private CoinDataService coinDataService;
 
 	@PostMapping(path = "/save")
 	public String saveUser(@RequestBody UserDto userDTO) {
@@ -34,32 +38,15 @@ public class UserController {
 	}
 
 	@PostMapping(path = "/login")
-    public ResponseEntity<?> loginUser(@RequestBody LoginDto loginDTO)
-    {
-        LoginResponse loginResponse = userService.loginUser(loginDTO);
-        return ResponseEntity.ok(loginResponse);
-    }
-
-	@GetMapping("/location")
-	private String getISSLocation()
-	{
-	    String url = "https://dummyjson.com/products";
-	    RestTemplate restTemplate = new RestTemplate();
-	    String result = restTemplate.getForObject(url, String.class);
-	    return result;
+	public ResponseEntity<?> loginUser(@RequestBody LoginDto loginDTO) {
+		LoginResponse loginResponse = userService.loginUser(loginDTO);
+		return ResponseEntity.ok(loginResponse);
 	}
-	
-	/*
-	 * @GetMapping("/datadedo") public Object fetchDataFromAPI() {
-	 * 
-	 * return userService.fetchDataFromAPI(); }
-	 */
-	
-	@GetMapping("/getdata")
-	public ResponseEntity<?> callRapidEndpointToGetCovidData(){
-        return ResponseEntity.ok(userService.getAllCountryCovidData());
 
-    }
-	
-	
+	@GetMapping("/getdata")
+	public ResponseEntity<?> getCoinData() {
+		return ResponseEntity.ok(coinDataService.getdata());
+
+	}
+
 }
